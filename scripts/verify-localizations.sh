@@ -35,13 +35,15 @@ done
 # The packaged App and the source tree share this check so a key that a release
 # gate rejects cannot reach CI green and only fail once a signed build exists.
 /usr/bin/ruby - "${LOCALIZATION_DIRS[@]}" <<'RUBY'
+require "json"
+require "open3"
+
 def strings(path)
-  result = {}
-  File.foreach(path, encoding: "UTF-8") do |line|
-    match = line.match(/^"([^"]+)" = "(.*)";$/)
-    result[match[1]] = match[2] if match
-  end
-  result
+  data, error, status = Open3.capture3("/usr/bin/plutil", "-convert", "json", "-o", "-", path)
+  abort "cannot read localization table #{path}: #{error}" unless status.success?
+  entries = JSON.parse(data)
+  abort "localization table must contain string values: #{path}" unless entries.is_a?(Hash) && entries.values.all? { |value| value.is_a?(String) }
+  entries
 end
 
 directories = ARGV

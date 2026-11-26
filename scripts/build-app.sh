@@ -781,8 +781,6 @@ plutil -insert SayAllChromecastIncluded -bool "$SAYALL_CHROMECAST_INCLUDED" \
 if [[ "$RELEASE_VARIANT" == "intel" ]]; then
   plutil -replace LSMinimumSystemVersion -string "$RELEASE_MIN_SYSTEM_VERSION" \
     "$APP_DIR/Contents/Info.plist"
-  plutil -replace SUFeedURL -string "$RELEASE_FEED_URL" \
-    "$APP_DIR/Contents/Info.plist"
 fi
 if [[ -n "${REMOTE_WEB_RELAY_URL:-}" ]]; then
   plutil -remove RemoteWebRelayURL "$APP_DIR/Contents/Info.plist" 2>/dev/null || true
@@ -916,6 +914,7 @@ for localization_dir in "${LOCALIZATION_DIRS[@]}"; do
   ditto --norsrc --noextattr --noqtn --noacl \
     "$localization_dir" \
     "$APP_DIR/Contents/Resources/$localization"
+  /usr/bin/plutil -convert binary1 "$APP_DIR/Contents/Resources/$localization/Localizable.strings"
 done
 if [[ "$SAYALL_AI_INCLUDED" == "true" ]]; then
   SAYALL_AI_RESOURCE_BUNDLE="$BIN_DIR/SayAllAI_SayAllAI.bundle"

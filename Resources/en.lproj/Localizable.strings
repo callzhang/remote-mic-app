@@ -166,7 +166,7 @@
 "trigger.single_click" = "Single Press";
 "trigger.double_click" = "Double Press";
 "trigger.long_press" = "Long Press";
-"app.name" = "SayAll";
+"app.name" = "T1 Remote";
 "macro.integration.focus_mcp_boundary" = "Select Input Field places the cursor in the target app. The MCP settings in Reflections let authorized AI clients read local history. These are separate features.";
 "application.wechat" = "WeChat";
 "application.wecom" = "WeCom";
@@ -669,8 +669,8 @@
 "about.preferences.show_status_bar_icon_help" = "If both the Dock and menu bar icons are off, open SayAll again to show Settings";
 "about.preferences.app_icon" = "App Icon";
 "about.preferences.app_icon_help" = "Choose the icon shown in the Dock, app switcher, and Settings";
-"about.preferences.app_icon_standard" = "Classic Duck";
-"about.preferences.app_icon_faceted_duck" = "Faceted Duck";
+"about.preferences.app_icon_standard" = "Standard";
+"about.preferences.app_icon_faceted_duck" = "Rounded";
 "about.preferences.language" = "App Language";
 "about.page.hero_subtitle" = "Version, preferences, and support for your wireless voice workspace";
 "about.page.hero_description" = "Turn your remote into an always-ready voice and shortcut controller for your Mac.";

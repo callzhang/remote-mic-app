@@ -1044,6 +1044,7 @@ private final class RemoteMicAppDelegate: NSObject, NSApplicationDelegate, NSMen
     }
 
     private func observeUpdatePreferences() {
+        guard updateFeedSelection.validatedStableFeedURL != nil else { return }
         model.settings.$checksForPreReleaseUpdates
             .removeDuplicates()
             .dropFirst()
@@ -1096,7 +1097,7 @@ private final class RemoteMicAppDelegate: NSObject, NSApplicationDelegate, NSMen
     }
 
     private func startUpdaterIfNeeded() {
-        guard !updaterStarted else { return }
+        guard !updaterStarted, updateFeedSelection.validatedStableFeedURL != nil else { return }
         updaterController.updater.automaticallyChecksForUpdates =
             UpdateCheckPolicy(
                 checksForPreReleaseUpdates: model.settings.checksForPreReleaseUpdates
@@ -1427,6 +1428,10 @@ private final class RemoteMicAppDelegate: NSObject, NSApplicationDelegate, NSMen
     }
 
     private func performUpdateCheck(_ purpose: UpdateCheckCoordinator.Purpose) {
+        guard updateFeedSelection.validatedStableFeedURL != nil else {
+            updateInformation.setUnavailable()
+            return
+        }
         let decision = updateChecks.request(
             purpose,
             sessionInProgress: updaterStarted && updaterController.updater.sessionInProgress

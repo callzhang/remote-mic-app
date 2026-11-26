@@ -166,7 +166,7 @@
 "trigger.single_click" = "单击";
 "trigger.double_click" = "双击";
 "trigger.long_press" = "长按";
-"app.name" = "无线麦 SayAll";
+"app.name" = "T1 遥控";
 "macro.integration.focus_mcp_boundary" = "“学习输入框”只负责把光标放到目标 App 的输入位置；“回眸”中的 Codex MCP / TOML 只负责授权读取本地历史，两者互不替代。";
 "application.wechat" = "微信";
 "application.wecom" = "企业微信";
@@ -669,8 +669,8 @@
 "about.preferences.show_status_bar_icon_help" = "如果程序坞 Dock 和顶部菜单栏图标都已关闭，可再次启动无线麦 SayAll 来打开设置";
 "about.preferences.app_icon" = "应用图标";
 "about.preferences.app_icon_help" = "选择在程序坞 Dock、应用切换器和设置窗口中显示的图标";
-"about.preferences.app_icon_standard" = "经典鸭";
-"about.preferences.app_icon_faceted_duck" = "几何鸭";
+"about.preferences.app_icon_standard" = "标准";
+"about.preferences.app_icon_faceted_duck" = "圆角";
 "about.preferences.language" = "应用语言";
 "about.page.hero_subtitle" = "集中查看无线语音工作台的版本、偏好与支持信息";
 "about.page.hero_description" = "让遥控器成为随手可用的 Mac 语音与快捷操作入口。";
