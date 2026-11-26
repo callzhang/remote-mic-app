@@ -21,6 +21,7 @@ RELEASE_VARIANT=apple-silicon CONFIGURATION="${CONFIGURATION:-release}" \
   /bin/zsh "$root/scripts/build-app.sh"
 
 plist="$app/Contents/Info.plist"
+test "$(plutil -extract CFBundleDisplayName raw -o - "$plist")" = SayAll
 test "$(plutil -extract CFBundleIdentifier raw -o - "$plist")" = io.github.callzhang.t1remote
 test "$(plutil -extract SayAllSourceCommit raw -o - "$plist")" = "$source_commit"
 test "$(plutil -extract SayAllPrivateArtifactsIncluded raw -o - "$plist")" = false
@@ -38,9 +39,9 @@ version=$(plutil -extract CFBundleShortVersionString raw -o - "$plist")
 build=$(plutil -extract CFBundleVersion raw -o - "$plist")
 payload="$stage/payload"
 mkdir -p "$payload"
-ditto --norsrc --noextattr --noqtn --noacl "$app" "$payload/T1 Remote.app"
+ditto --norsrc --noextattr --noqtn --noacl "$app" "$payload/SayAll.app"
 cp "$root"/{LICENSE.md,COPYRIGHT.md,THIRD_PARTY_NOTICES.md} "$payload/"
-archive="T1-Remote-$version-$build-AppleSilicon.zip"
+archive="SayAll-$version-$build-AppleSilicon.zip"
 ditto --norsrc --noextattr --noqtn --noacl -c -k "$payload" "$stage/$archive"
 unzip -tq "$stage/$archive"
 mv "$stage/$archive" "$output/$archive"

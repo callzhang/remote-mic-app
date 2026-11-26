@@ -166,7 +166,7 @@
 "trigger.single_click" = "Single Press";
 "trigger.double_click" = "Double Press";
 "trigger.long_press" = "Long Press";
-"app.name" = "T1 Remote";
+"app.name" = "SayAll";
 "macro.integration.focus_mcp_boundary" = "Select Input Field places the cursor in the target app. The MCP settings in Reflections let authorized AI clients read local history. These are separate features.";
 "application.wechat" = "WeChat";
 "application.wecom" = "WeCom";
