@@ -781,6 +781,9 @@ plutil -insert SayAllChromecastIncluded -bool "$SAYALL_CHROMECAST_INCLUDED" \
 if [[ "$RELEASE_VARIANT" == "intel" ]]; then
   plutil -replace LSMinimumSystemVersion -string "$RELEASE_MIN_SYSTEM_VERSION" \
     "$APP_DIR/Contents/Info.plist"
+  if plutil -extract SUFeedURL raw -o - "$APP_DIR/Contents/Info.plist" >/dev/null 2>&1; then
+    plutil -replace SUFeedURL -string "$RELEASE_FEED_URL" "$APP_DIR/Contents/Info.plist"
+  fi
 fi
 if [[ -n "${REMOTE_WEB_RELAY_URL:-}" ]]; then
   plutil -remove RemoteWebRelayURL "$APP_DIR/Contents/Info.plist" 2>/dev/null || true
